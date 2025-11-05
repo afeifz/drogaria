@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar novo remédio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Novo remédio</h1>
+    <form th:action="${acao} == null ? '/drogaria' : ${acao}" method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" th:value="${acao} != null ? ${remedio.nome}" required>
+        </div>
+        <div class="mb-3">
+            <label for="preco" class="form-label">Preço</label>
+            <input type="number" th:value="${acao} != null ? ${remedio.preco}" class="form-control" id="preco" name="preco" required>
+        </div>
+        <div class="mb-3">
+            <label for="dataDeFabricacao" class="form-label">Data de Fabricação</label>
+            <input type="date" th:value="${acao} != null ? ${remedio.dataDeFabricacao}" class="form-control" id="dataDeFabricacao" name="dataDeFabricacao" required>
+        </div>
+        <div class="mb-3">
+            <label for="dataDeValidade" class="form-label">Data de Validade</label>
+            <input type="date" th:value="${acao} != null ? ${remedio.dataDeValidade}" class="form-control" id="dataDeValidade" name="dataDeValidade" required>
+        </div>
+        <div class="mb-3">
+            <label for="urlImagem" class="form-label">URL Da Imagem</label>
+            <input type="url" th:value="${acao} != null ? ${remedio.urlImagem}" class="form-control" id="urlImagem" name="urlImagem">
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+        <a href="/drogaria" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
